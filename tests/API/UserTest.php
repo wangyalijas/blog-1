@@ -136,4 +136,29 @@ class UserTest extends TestCase
         $response->assertSuccessful();
         $this->assertFalse(User::whereKey($user->getKey())->exists());
     }
+
+
+    /**
+     * Get authenticated user when without authorization
+     *
+     * @return void
+     */
+    public function testGetAuthUserWhenWithoutAuthorization()
+    {
+        $response = $this->get(api_route('auth.user'));
+        $response->assertStatus(Response::HTTP_UNAUTHORIZED);
+    }
+
+
+    /**
+     * Get authenticated user when without authorization
+     *
+     * @return void
+     * @throws \Exception
+     */
+    public function testGetNotExistUser()
+    {
+        $response = $this->auth()->get(api_route('users.show', 0));
+        $this->assertTrue($response->isNotFound());
+    }
 }
