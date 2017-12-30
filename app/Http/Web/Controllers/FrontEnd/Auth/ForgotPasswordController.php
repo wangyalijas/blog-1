@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Web\Controllers\Auth;
+namespace App\Http\Web\Controllers\FrontEnd\Auth;
 
-use App\Http\Web\Controllers\Controller;
+use App\Http\Web\Controllers\FrontEnd\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller
@@ -28,5 +28,14 @@ class ForgotPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+    /**
+     * Display the form to request a password reset link.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLinkRequestForm()
+    {
+        return view('front_end.auth.passwords.email');
     }
 }

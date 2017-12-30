@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Web\Controllers\Auth;
+namespace App\Http\Web\Controllers\FrontEnd\Auth;
 
 use App\Models\User;
-use App\Http\Web\Controllers\Controller;
+use App\Http\Web\Controllers\FrontEnd\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -67,5 +67,15 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        return view('front_end.auth.register');
     }
 }

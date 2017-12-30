@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Web\Controllers;
+namespace App\Http\Web\Controllers\FrontEnd;
 
-use App\Http\Web\Controllers\Controller;
+use App\Http\Web\Controllers\FrontEnd\Controller;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,6 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('front_end.home');
     }
 }

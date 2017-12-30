@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Web\Controllers\Auth;
+namespace App\Http\Web\Controllers\FrontEnd\Auth;
 
-use App\Http\Web\Controllers\Controller;
+use App\Http\Web\Controllers\FrontEnd\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -35,5 +35,15 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+        return view('front_end.auth.login');
     }
 }

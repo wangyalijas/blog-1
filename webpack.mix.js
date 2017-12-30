@@ -11,5 +11,15 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+
+// Front end
+mix.js('resources/assets/js/front_end/app.js', 'public/js/front_end')
+   .sass('resources/assets/sass/front_end/app.scss', 'public/css/front_end');
+
+
+// BrowserSync
+mix.browserSync({
+    proxy: 'blog.localhost',
+    port: 3000,
+    open: false
+});
