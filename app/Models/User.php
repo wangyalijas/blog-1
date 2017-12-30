@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use App\Models\Base\BaseUserModel as Authenticatable;
+use Prettus\Repository\Traits\TransformableTrait;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, TransformableTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -24,6 +25,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'remember_token',
     ];
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
 }
