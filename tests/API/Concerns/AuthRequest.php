@@ -2,7 +2,7 @@
 
 namespace Tests\API\Concerns;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Contracts\Auth\Authenticatable;
 
 trait AuthRequest
