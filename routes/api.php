@@ -1,5 +1,6 @@
 <?php
 
+use Dingo\Api\Routing\Router;
 use Illuminate\Http\Request;
 
 /*
@@ -13,6 +14,21 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+/** @var Router $api */
+$api->version(
+    'v1',
+    [
+        'middleware' => ['api',],
+    ],
+    function (Router $api) {
+
+        $api->group(['middleware' => 'auth:api'], function (Router $api) {
+
+            $api->get('user', function (Request $request) {
+                return $request->user();
+            });
+
+        });
+
+    }
+);
