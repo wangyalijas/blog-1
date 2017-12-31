@@ -51,9 +51,15 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::middleware('web')
-            ->namespace($this->getFrontEndNamespace())
+        $route = Route::middleware('web');
+
+        // Front end routers
+        $route->namespace($this->getFrontEndNamespace())
             ->group(base_path('routes/web/front_end.php'));
+
+        // Back end routers
+        $route->namespace($this->getConsoleNamespace())
+            ->group(base_path('routes/web/console.php'));
     }
 
     /**
@@ -73,5 +79,10 @@ class RouteServiceProvider extends ServiceProvider
     private function getFrontEndNamespace()
     {
         return "{$this->namespace}\\FrontEnd";
+    }
+
+    private function getConsoleNamespace()
+    {
+        return "{$this->namespace}\\Console";
     }
 }
