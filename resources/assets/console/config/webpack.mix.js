@@ -12,14 +12,14 @@ let mix = require('laravel-mix');
  */
 
 
-// Front end resources
-mix.js('resources/assets/front_end/js/app.js', 'public/js/front_end')
-   .sass('resources/assets/front_end/sass/app.scss', 'public/css/front_end');
-
-
-// Console sources
 mix.js('resources/assets/console/js/app.js', 'public/js/console')
-    .sass('resources/assets/console/sass/app.scss', 'public/css/console');
+    .sass('resources/assets/console/sass/app.scss', 'public/css/console')
+    .extract(['lodash', 'jquery', 'bootstrap-sass', 'axios', 'vue']);
+
+
+if (mix.inProduction()) {
+    mix.version();
+}
 
 
 // BrowserSync
