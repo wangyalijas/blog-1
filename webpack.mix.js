@@ -12,14 +12,14 @@ let mix = require('laravel-mix');
  */
 
 
-// Front end sources
-mix.js('resources/assets/js/front_end/app.js', 'public/js/front_end')
-    .sass('resources/assets/sass/front_end/app.scss', 'public/css/front_end');
+// Front end resources
+mix.js('resources/assets/front_end/js/app.js', 'public/js/front_end')
+   .sass('resources/assets/front_end/sass/app.scss', 'public/css/front_end');
 
 
 // Console sources
-mix.js('resources/assets/js/console/app.js', 'public/js/console')
-    .sass('resources/assets/sass/console/app.scss', 'public/css/console');
+mix.js('resources/assets/console/js/app.js', 'public/js/console')
+    .sass('resources/assets/console/sass/app.scss', 'public/css/console');
 
 
 // BrowserSync
