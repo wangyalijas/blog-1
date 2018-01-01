@@ -1,9 +1,21 @@
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
-// Variables
-@import "variables";
+@import "../../common/sass/fonts/poppins/poppins";
 
 // Bootstrap
-@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "../../../../node_modules/bootstrap/scss/bootstrap";
+
+// Font Awesome
+@import "fonts/font-awesome/font-awesome";
+
+// Font Awesome
+@import "fonts/font-awesome/font-awesome";
+
+// Fontastic Custom icons
+@import "fonts/fontastic/fontastic";
+
+// Themes
+@import "themes/style.pink";
+
+// Custom
+@import "custom";

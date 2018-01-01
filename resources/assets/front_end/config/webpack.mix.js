@@ -20,6 +20,8 @@ mix.js('resources/assets/front_end/js/app.js', 'public/js/front_end')
 
 if (mix.inProduction()) {
     mix.version();
+} else {
+    mix.sourceMaps();
 }
 
 // BrowserSync

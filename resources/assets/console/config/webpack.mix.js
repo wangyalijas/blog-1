@@ -16,11 +16,17 @@ require('../../common/config/webpack.mix');
 
 mix.js('resources/assets/console/js/app.js', 'public/js/console')
     .sass('resources/assets/console/sass/app.scss', 'public/css/console')
-    .extract(['lodash', 'jquery', 'bootstrap-sass', 'axios', 'vue']);
+    .extract(['lodash', 'jquery', 'bootstrap', 'axios', 'vue', 'popper.js', 'chart.js', 'jquery-validation'])
+    .autoload({
+        'jquery': ['$', 'window.jQuery'],
+        'popper.js': ['Popper', 'window.Popper'],
+    });
 
 
 if (mix.inProduction()) {
     mix.version();
+} else {
+    mix.sourceMaps();
 }
 
 
