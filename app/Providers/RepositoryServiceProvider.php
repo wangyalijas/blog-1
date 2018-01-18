@@ -3,10 +3,10 @@
 namespace App\Providers;
 
 use App\Repositories\Eloquent\{
-    UserRepositoryEloquent
+    ArticleRepositoryEloquent, UserRepositoryEloquent
 };
 use App\Repositories\Interfaces\{
-    UserRepository
+    ArticleRepository, UserRepository
 };
 use Illuminate\Support\ServiceProvider;
 
@@ -30,6 +30,7 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(UserRepository::class, UserRepositoryEloquent::class);
+        $this->app->bind(ArticleRepository::class, ArticleRepositoryEloquent::class);
         //:end-bindings:
     }
 }

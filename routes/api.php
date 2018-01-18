@@ -37,6 +37,14 @@ $api->version(
                 $api->delete('/{id}', 'UsersController@destroy')->name('users.destroy');
             });
 
+            $api->group(['prefix' => 'articles'], function (Router $api) {
+                $api->get('/', 'ArticlesController@index')->name('articles.list');
+                $api->get('/{id}', 'ArticlesController@show')->name('articles.show');
+                $api->post('/', 'ArticlesController@store')->name('articles.store');
+                $api->put('/{id}', 'ArticlesController@update')->name('articles.update');
+                $api->delete('/{id}', 'ArticlesController@destroy')->name('articles.destroy');
+            });
+
         });
 
     }
