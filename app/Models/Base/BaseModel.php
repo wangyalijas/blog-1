@@ -15,7 +15,7 @@ abstract class BaseModel extends Model implements Transformable
      *
      * @return \Carbon\Carbon|null
      */
-    public function getCreatedTime()
+    public function getCreatedAt()
     {
         return $this->getAttribute($this->getCreatedAtColumn());
     }
@@ -25,7 +25,7 @@ abstract class BaseModel extends Model implements Transformable
      *
      * @return \Carbon\Carbon|null
      */
-    public function getUpdatedTime()
+    public function getUpdatedAt()
     {
         return $this->getAttribute($this->getUpdatedAtColumn());
     }
