@@ -30,7 +30,7 @@ $api->version(
             });
 
             $api->group(['prefix' => 'users'], function (Router $api) {
-                $api->get('/', 'UsersController@index')->name('users.index');
+                $api->get('/', 'UsersController@index')->name('users.list');
                 $api->get('/{id}', 'UsersController@show')->name('users.show');
                 $api->post('/', 'UsersController@store')->name('users.store');
                 $api->put('/{id}', 'UsersController@update')->name('users.update');

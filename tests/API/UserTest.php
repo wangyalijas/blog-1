@@ -39,7 +39,7 @@ class UserTest extends TestCase
      */
     public function testGetAllUsers()
     {
-        $response = $this->auth()->get(api_route('users.index'));
+        $response = $this->auth()->get(api_route('users.list'));
 
         $response->assertJsonStructure([
             'data' => [
