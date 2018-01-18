@@ -9,7 +9,7 @@ use Prettus\Repository\Traits\TransformableTrait;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable, TransformableTrait;
+    use HasApiTokens, Notifiable;
 
     /**
      * The attributes that are mass assignable.
