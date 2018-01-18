@@ -2,14 +2,9 @@
 
 namespace App\Transformers;
 
-use League\Fractal\TransformerAbstract;
 use App\Models\User;
 
-/**
- * Class UserTransformer
- * @package namespace App\Transformers;
- */
-class UserTransformer extends TransformerAbstract
+class UserTransformer extends BaseTransformer
 {
 
     /**
