@@ -52,6 +52,4 @@ if (token) {
 //     key: 'your-pusher-key'
 // });
 
-require('./extras/charts-home');
-
 require('./extras/front');

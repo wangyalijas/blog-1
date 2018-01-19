@@ -546,3 +546,7 @@
     </section>
 
 @endsection
+
+@push('scripts')
+    <script src="{{ mix('js/console/charts-home.js') }}"></script>
+@endpush
