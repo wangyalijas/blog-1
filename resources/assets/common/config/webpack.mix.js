@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 // Append origin data to manifest before clear
 let originData = Mix.manifest.read();
