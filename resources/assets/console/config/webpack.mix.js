@@ -15,7 +15,7 @@ require('../../common/config/webpack.mix');
 
 
 mix.js('resources/assets/console/js/app.js', 'public/js/console')
-    .copy('/home/qiutuleng/Code/blog/resources/assets/console/js/extras/charts-home.js', 'public/js/console')
+    .copy('resources/assets/console/js/extras/charts-home.js', 'public/js/console')
     .sass('resources/assets/console/sass/app.scss', 'public/css/console')
     .extract(['lodash', 'jquery', 'bootstrap', 'axios', 'vue', 'popper.js', 'chart.js', 'jquery-validation'])
     .autoload({
