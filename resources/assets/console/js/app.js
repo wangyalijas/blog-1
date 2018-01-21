@@ -17,6 +17,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('page-header', require('./components/PageHeader.vue'));
+Vue.component('pagination', require('./components/Pagination.vue'));
 
 const app = new Vue({
     el: '#app'
