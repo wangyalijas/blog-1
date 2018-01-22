@@ -15,8 +15,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('page-header', require('./components/PageHeader.vue'));
-Vue.component('pagination', require('./components/Pagination.vue'));
+require('./components');
 
 const app = new Vue({
     el: '#app'
