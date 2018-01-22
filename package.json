@@ -32,5 +32,8 @@
         "lodash": "^4.17.4",
         "popper.js": "^1.12.9",
         "vue": "^2.5.7"
+    },
+    "dependencies": {
+        "element-ui": "^2.0.11"
     }
 }
