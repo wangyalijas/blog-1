@@ -11,7 +11,10 @@ Vue.component(DataTable.name, DataTable);
 
 
 // Third-party components
-import {Table, TableColumn} from 'element-ui';
+import {Table, TableColumn, Loading, Message} from 'element-ui';
 
 Vue.use(Table);
 Vue.use(TableColumn);
+Vue.use(Loading);
+
+Vue.prototype.$message = Message;
