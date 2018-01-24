@@ -26,3 +26,16 @@
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
+
+.content-inner {
+  position: static;
+}
+
+.page-content {
+  position: relative;
+}
+
+footer.main-footer {
+  width: calc(100% - 250px);
+  right: 0;
+}
