@@ -1,1 +1,18 @@
 @import "../../../../node_modules/element-ui/lib/theme-chalk/index.css";
+
+.el-table__body-wrapper {
+  overflow: visible;
+}
+
+.el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+  background-color: $primary-color;
+  border-color: $primary-color;
+}
+
+.el-checkbox__inner:hover {
+  border-color: $primary-color;
+}
+
+.el-checkbox__input.is-focus .el-checkbox__inner {
+  border-color: $primary-color;
+}
