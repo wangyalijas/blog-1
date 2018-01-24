@@ -16,6 +16,9 @@ Route::group(['prefix' => 'console', 'middleware' => 'auth:console'], function (
 
     Route::get('/', 'HomeController@index')->name('console.home');
 
+    Route::group(['prefix' => 'articles'], function () {
+        Route::get('/', 'ArticlesController@index')->name('console.articles.home');
+    });
 });
 
 // Guest routes

@@ -1,4 +1,4 @@
-
+import ArticlesHome from './components/articles/Home.vue'
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -18,5 +18,8 @@ window.Vue = require('vue');
 require('./components');
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    components: {
+        ArticlesHome
+    }
 });
