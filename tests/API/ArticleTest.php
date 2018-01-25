@@ -3,6 +3,7 @@
 namespace Tests\API;
 
 use App\Models\Article;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Response;
 
 class ArticleTest extends TestCase
@@ -110,5 +111,25 @@ class ArticleTest extends TestCase
 
         $response->assertSuccessful();
         $this->assertFalse(Article::whereKey($article->getKey())->exists());
+    }
+
+
+    /**
+     * Test destroy the many articles
+     *
+     * @return void
+     * @throws \Exception
+     */
+    public function testDestroyManyArticles()
+    {
+        /** @var Collection $articles */
+        $articles = factory(Article::class, 10)->create();
+
+        $response = $this->auth()->delete(api_route('articles.destroy_many', [
+            'ids' => $articles->modelKeys()
+        ]));
+
+        $response->assertSuccessful();
+        $this->assertFalse(Article::whereKey($articles->modelKeys())->exists());
     }
 }

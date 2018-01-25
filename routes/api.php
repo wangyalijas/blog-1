@@ -43,6 +43,7 @@ $api->version(
                 $api->post('/', 'ArticlesController@store')->name('articles.store');
                 $api->put('/{id}', 'ArticlesController@update')->name('articles.update');
                 $api->delete('/{id}', 'ArticlesController@destroy')->name('articles.destroy');
+                $api->delete('/', 'ArticlesController@destroyMany')->name('articles.destroy_many');
             });
 
         });

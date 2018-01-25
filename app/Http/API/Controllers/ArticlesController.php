@@ -9,6 +9,7 @@ use App\Validators\ArticleValidator;
 use Dingo\Api\Exception\DeleteResourceFailedException;
 use Dingo\Api\Exception\StoreResourceFailedException;
 use Dingo\Api\Exception\UpdateResourceFailedException;
+use Illuminate\Http\Request;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 
@@ -126,6 +127,27 @@ class ArticlesController extends Controller
     public function destroy($id)
     {
         $deleted = $this->repository->delete($id);
+
+        if ($deleted) {
+            // Deleted, return 204 No Content
+            return $this->response->noContent();
+        } else {
+            // Failed, throw exception
+            throw new DeleteResourceFailedException();
+        }
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyMany(Request $request)
+    {
+        $ids = $request->get('ids');
+        $deleted = $this->repository->deleteMany($ids);
 
         if ($deleted) {
             // Deleted, return 204 No Content
