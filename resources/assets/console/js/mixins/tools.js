@@ -4,7 +4,7 @@ export default {
             if (path && path.substring(0, 1) != '/') {
                 path = '/' + path;
             }
-            return this.baseUrl + path;
+            return path;
         },
         redirectToUrl(url) {
             window.location.href = url;
