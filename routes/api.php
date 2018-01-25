@@ -23,7 +23,7 @@ $api->version(
     ],
     function (Router $api) {
 
-        $api->group(['middleware' => 'auth:api'], function (Router $api) {
+        $api->group(['middleware' => 'auth:api,console_api'], function (Router $api) {
 
             $api->group(['prefix' => 'user'], function (Router $api) {
                 $api->get('user', 'UsersController@me')->name('auth.user');

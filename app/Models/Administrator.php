@@ -5,10 +5,11 @@ namespace App\Models;
 use App\Notifications\ResetAdministratorPassword;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Base\BaseUserModel as Authenticatable;
+use Laravel\Passport\HasApiTokens;
 
 class Administrator extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable;
 
     /**
      * The attributes that are mass assignable.
