@@ -12,44 +12,20 @@
 
                     <div class="card-body">
                         <form class="form-horizontal" @submit.prevent="handleSave">
-                            <div class="form-group-material">
-                                <input id="article-title"
-                                       type="text"
-                                       name="title"
-                                       class="input-material"
-                                       v-model="formData.title"
-                                       required
-                                >
-                                <label for="article-title" class="label-material">Title</label>
-                            </div>
 
-                            <div class="form-group-material">
-                                <textarea id="article-summary"
-                                          name="summary"
-                                          class="textarea-material"
-                                          v-model="formData.summary"
-                                          required
-                                >
-                                </textarea>
-                                <label for="article-summary" class="label-material">Summary</label>
-                            </div>
+                            <material-input v-model="formData.title" label="Title" required/>
 
-                            <div class="form-group-material">
-                                <textarea id="article-content"
-                                          name="content"
-                                          class="textarea-material"
-                                          v-model="formData.content"
-                                          required
-                                >
-                                </textarea>
-                                <label for="article-content" class="label-material">Content</label>
-                            </div>
+                            <material-textarea v-model="formData.summary" label="Summary" required/>
+
+                            <material-textarea v-model="formData.content" label="Content" required/>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Save</button>
-                                <button type="button" class="btn btn-secondary">Cancel</button>
+                                <button type="submit" class="btn btn-primary" :disable="isLoading">Save</button>
+                                <button type="button" class="btn btn-secondary" @click="redirectToArticlesModuleHome">Cancel</button>
                             </div>
+
                             <div class="line"></div>
+
                         </form>
                     </div>
                 </div>
@@ -61,8 +37,15 @@
 <script>
     export default {
         name: "articles-editor",
+        props: {
+            id: {
+                type: Number,
+                required: false
+            }
+        },
         data: function () {
             return {
+                isLoading: false,
                 formData: {
                     title: null,
                     summary: null,
@@ -70,21 +53,81 @@
                 }
             };
         },
+        computed: {
+            isEditing() {
+                return !!this.id;
+            },
+            isCreating() {
+                return !this.isEditing;
+            },
+        },
+        watch: {
+            id: function () {
+                if (value) {
+                    this.fetchEditingArticle();
+                }
+            }
+        },
         methods: {
             handleSave() {
+                if (this.isLoading) {
+                    this.$message.warning('Please wait...');
+                    return;
+                }
+
+                if (this.isCreating) {
+                    this.createArticle();
+                }
+                if (this.isEditing) {
+                    this.updateArticle();
+                }
+            },
+            createArticle() {
+                this.startLoadingStatus();
                 this.$api.post('articles', this.formData)
                     .then(response => {
-                        console.log(response)
                         this.$message({
-                            message: '创建成功',
+                            message: 'Created successfully.',
                             type: 'success',
                             onClose: this.redirectToArticlesModuleHome
                         });
                     })
                     .catch(this.simpleAPIRequestErrorHandler);
             },
+            updateArticle() {
+                this.startLoadingStatus();
+                this.$api.put(`articles/${this.id}`, this.formData)
+                    .then(response => {
+                        this.$message({
+                            message: 'Updated successfully.',
+                            type: 'success',
+                            onClose: this.redirectToArticlesModuleHome
+                        });
+                    })
+                    .catch(this.simpleAPIRequestErrorHandler);
+            },
+            fetchEditingArticle() {
+                this.$api.get(`articles/${this.id}`)
+                    .then(({data}) => {
+                        this.appendArticleDataToFormData(data.data);
+                    })
+                    .catch(this.simpleAPIRequestErrorHandler);
+            },
+            appendArticleDataToFormData(article) {
+                this.formData.title = article.title;
+                this.formData.summary = article.summary;
+                this.formData.content = article.content;
+            },
             redirectToArticlesModuleHome() {
                 this.redirectToUrlFromBaseUrl('console/articles');
+            },
+            startLoadingStatus() {
+                this.isLoading = true;
+            }
+        },
+        created() {
+            if (this.isEditing) {
+                this.fetchEditingArticle();
             }
         }
     }

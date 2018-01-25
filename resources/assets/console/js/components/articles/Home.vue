@@ -10,9 +10,11 @@
                             :sorted-by="sortedBy"
                             :orderable-fields="orderableFields"
                             :resource-path="resourcePath"
+                            @selection-change="handleTableSelectionChange"
                 >
                     <template slot="UpperLeftCorner">
-                        <button type="submit" class="btn btn-primary" @click="handleCreateArticle">Create</button>
+                        <button type="button" class="btn btn-primary" @click="handleCreateArticle">Create</button>
+                        <button type="button" class="btn btn-primary" @click="handleEditArticle">Edit</button>
                     </template>
 
                     <template slot="DataTableColumns">
@@ -89,12 +91,43 @@
                         display: '标题',
                     },
                 ],
+                multipleSelection: []
             };
+        },
+        computed: {
+            isNotArticleSelected() {
+                return this.multipleSelection.length === 0;
+            },
+            isOneArticleSelected() {
+                return this.multipleSelection.length === 1;
+            },
+            isOneOrMoreArticleSelected() {
+                return !this.isNotArticleSelected;
+            }
         },
         methods: {
             handleCreateArticle() {
                 this.redirectToUrl('/console/articles/new');
-            }
+            },
+            handleEditArticle() {
+                if (this.isNotArticleSelected) {
+                    this.$message.error('Please select an article to be edit first.');
+                    return;
+                }
+                if (!this.isOneArticleSelected) {
+                    this.$message.error('Only one article can be selected for edit');
+                    return;
+                }
+                this.redirectToUrl(`/console/articles/${this.getSelectedArticleIds().shift()}/edit`);
+            },
+            handleTableSelectionChange(value) {
+                this.multipleSelection = value;
+            },
+            getSelectedArticleIds() {
+                return this.multipleSelection.map(article => {
+                    return article.id;
+                });
+            },
         }
     }
 </script>

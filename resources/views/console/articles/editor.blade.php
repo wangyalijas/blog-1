@@ -2,6 +2,6 @@
 
 @section('content')
 
-    <articles-editor/>
+    <articles-editor @if(isset($id)) :id="{{ $id }}" @endif/>
 
 @endsection

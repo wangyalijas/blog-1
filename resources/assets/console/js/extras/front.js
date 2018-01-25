@@ -83,11 +83,12 @@ $(document).ready(function () {
     // ------------------------------------------------------- //
     // Transition Placeholders
     // ------------------------------------------------------ //
-    $('input.input-material, textarea.textarea-material').on('focus', function () {
+    var materialElements = $('input.input-material, textarea.textarea-material');
+    materialElements.on('focus', function () {
         $(this).siblings('.label-material').addClass('active');
     });
 
-    $('input.input-material, textarea.textarea-material').on('blur', function () {
+    materialElements.on('blur', function () {
         $(this).siblings('.label-material').removeClass('active');
 
         if ($(this).val() !== '') {
