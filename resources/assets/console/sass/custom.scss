@@ -39,3 +39,9 @@ footer.main-footer {
   width: calc(100% - 250px);
   right: 0;
 }
+
+@media (max-width: 1199px) {
+  footer.main-footer {
+    width: 100%;
+  }
+}

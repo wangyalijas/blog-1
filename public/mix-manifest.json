@@ -1,9 +1,11 @@
 {
-    "/js/front_end/app.js": "/js/front_end/app.js?id=0dfc9d822a361058912b",
+    "/js/front_end/app.js": "/js/front_end/app.js?id=828e52196b0ca762c53c",
     "/css/front_end/app.css": "/css/front_end/app.css?id=e0a2330cf758f640ada0",
-    "/js/console/vendor.js": "/js/console/vendor.js?id=f0f7cea6ed6b3459b06f",
-    "/js/console/app.js": "/js/console/app.js?id=ec3ceb302013ab2c8a26",
-    "/css/console/app.css": "/css/console/app.css?id=a898703be841d3f4d72a",
-    "/js/console/manifest.js": "/js/console/manifest.js?id=0640d1a4a762b26f1dc1",
-    "/js/console/charts-home.js": "/js/console/charts-home.js?id=ee82e2fc3ac6ad9d5d47"
+    "/js/console/vendor.js": "/js/console/vendor.js",
+    "/js/console/app.js": "/js/console/app.js",
+    "/css/console/app.css": "/css/console/app.css",
+    "/js/console/manifest.js": "/js/console/manifest.js",
+    "/js/console/charts-home.js": "/js/console/charts-home.js",
+    "/1.dde77de3c94c96e73d1d.hot-update.js": "/1.dde77de3c94c96e73d1d.hot-update.js",
+    "/1.1deb7d010704a1601fc2.hot-update.js": "/1.1deb7d010704a1601fc2.hot-update.js"
 }
