@@ -45,3 +45,37 @@ footer.main-footer {
     width: 100%;
   }
 }
+
+textarea.textarea-material {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+  &:focus {
+    border-color: $primary-color;
+    outline: none;
+  }
+  ~ label {
+    color: #aaa;
+    position: absolute;
+    top: 14px;
+    left: 0;
+    cursor: text;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+    font-weight: 300;
+    &.error {
+      color: #dc3545;
+      font-size: 0.75em;
+      position: absolute;
+      top: auto;
+      bottom: -30px;
+      left: 0;
+    }
+    &.active {
+      font-size: 0.8em;
+      top: -10px;
+      color: $primary-color;
+    }
+  }
+}
