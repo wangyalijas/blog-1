@@ -367,6 +367,9 @@
             },
             toggleRowSelection(...parameters) {
                 this.$refs.multipleTable.toggleRowSelection(...parameters);
+            },
+            reload() {
+                this.fetchData();
             }
         },
         created() {

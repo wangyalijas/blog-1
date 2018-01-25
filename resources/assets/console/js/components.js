@@ -15,10 +15,14 @@ Vue.component(MaterialTextarea.name, MaterialTextarea);
 
 
 // Third-party components
-import {Table, TableColumn, Loading, Message} from 'element-ui';
+import {Table, TableColumn, Loading, Message, MessageBox} from 'element-ui';
 
 Vue.use(Table);
 Vue.use(TableColumn);
 Vue.use(Loading);
 
 Vue.prototype.$message = Message;
+Vue.prototype.$messageBox = MessageBox;
+Vue.prototype.$alert = MessageBox.alert;
+Vue.prototype.$confirm = MessageBox.confirm;
+Vue.prototype.$prompt = MessageBox.prompt;

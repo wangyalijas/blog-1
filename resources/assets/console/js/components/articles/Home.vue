@@ -11,10 +11,12 @@
                             :orderable-fields="orderableFields"
                             :resource-path="resourcePath"
                             @selection-change="handleTableSelectionChange"
+                            ref="dataTable"
                 >
                     <template slot="UpperLeftCorner">
                         <button type="button" class="btn btn-primary" @click="handleCreateArticle">Create</button>
                         <button type="button" class="btn btn-primary" @click="handleEditArticle">Edit</button>
+                        <button type="button" class="btn btn-danger" @click="handleDeleteArticles">Delete</button>
                     </template>
 
                     <template slot="DataTableColumns">
@@ -120,6 +122,21 @@
                 }
                 this.redirectToUrl(`/console/articles/${this.getSelectedArticleIds().shift()}/edit`);
             },
+            handleDeleteArticles() {
+                if (this.isNotArticleSelected) {
+                    this.$message.error('Please select articles to be delete.');
+                    return;
+                }
+
+                this.$confirm('Are you sure you want to delete the selected articles?', 'Message', {
+                    confirmButtonText: 'Confirm',
+                    cancelButtonText: 'Cancel',
+                    type: 'warning'
+                }).then(() => {
+                    this.deleteSelectedArticles();
+                }).catch(() => {
+                });
+            },
             handleTableSelectionChange(value) {
                 this.multipleSelection = value;
             },
@@ -128,6 +145,20 @@
                     return article.id;
                 });
             },
+            deleteSelectedArticles() {
+                let ids = this.getSelectedArticleIds();
+
+                this.$api.delete('articles', {
+                    params: {ids}
+                })
+                    .then(response => {
+                        this.$message.success('Delete successfully.');
+                    })
+                    .finally(this.reloadData);
+            },
+            reloadData() {
+                this.$refs.dataTable.reload();
+            }
         }
     }
 </script>
