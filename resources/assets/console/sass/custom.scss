@@ -5,16 +5,16 @@
 }
 
 .el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner {
-  background-color: $primary-color;
-  border-color: $primary-color;
+  background-color: $primary-color !important;
+  border-color: $primary-color !important;
 }
 
 .el-checkbox__inner:hover {
-  border-color: $primary-color;
+  border-color: $primary-color !important;
 }
 
 .el-checkbox__input.is-focus .el-checkbox__inner {
-  border-color: $primary-color;
+  border-color: $primary-color !important;
 }
 
 .btn-group > .dropdown-container:not(:last-child) > .btn {
