@@ -83,11 +83,11 @@ $(document).ready(function () {
     // ------------------------------------------------------- //
     // Transition Placeholders
     // ------------------------------------------------------ //
-    $('input.input-material').on('focus', function () {
+    $('input.input-material, textarea.textarea-material').on('focus', function () {
         $(this).siblings('.label-material').addClass('active');
     });
 
-    $('input.input-material').on('blur', function () {
+    $('input.input-material, textarea.textarea-material').on('blur', function () {
         $(this).siblings('.label-material').removeClass('active');
 
         if ($(this).val() !== '') {
@@ -96,6 +96,20 @@ $(document).ready(function () {
             $(this).siblings('.label-material').removeClass('active');
         }
     });
+
+    // $('textarea.textarea-material').on('focus', function () {
+    //     $(this).siblings('.label-material').addClass('active');
+    // });
+    //
+    // $('textarea.textarea-material').on('blur', function () {
+    //     $(this).siblings('.label-material').removeClass('active');
+    //
+    //     if ($(this).val() !== '') {
+    //         $(this).siblings('.label-material').addClass('active');
+    //     } else {
+    //         $(this).siblings('.label-material').removeClass('active');
+    //     }
+    // });
 
     // ------------------------------------------------------- //
     // Footer 

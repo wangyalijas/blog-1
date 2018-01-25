@@ -1,4 +1,5 @@
 import ArticlesHome from './components/articles/Home.vue'
+import ArticlesEditor from './components/articles/Editor.vue'
 
 import ToolsMixin from './mixins/tools.js'
 import APIMixin from './mixins/api.js'

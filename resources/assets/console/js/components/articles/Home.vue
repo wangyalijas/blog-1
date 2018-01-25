@@ -11,6 +11,10 @@
                             :orderable-fields="orderableFields"
                             :resource-path="resourcePath"
                 >
+                    <template slot="UpperLeftCorner">
+                        <button type="submit" class="btn btn-primary" @click="handleCreateArticle">Create</button>
+                    </template>
+
                     <template slot="DataTableColumns">
                         <el-table-column type="selection" width="34"></el-table-column>
                         <el-table-column
@@ -87,6 +91,11 @@
                 ],
             };
         },
+        methods: {
+            handleCreateArticle() {
+                this.redirectToUrl('/console/articles/new');
+            }
+        }
     }
 </script>
 
